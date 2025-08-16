@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from storage_handler import StorageHandler
+from .storage_handler import StorageHandler
 
 
 @dataclass
