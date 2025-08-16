@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 from recipe_manager.types import Recipes
 from recipe import Recipe
-from recipe_manager.controllers import StorageHandler, InputHandler
+from recipe_manager.models import StorageHandler
+from recipe_manager.views import InputHandler
 
 
 @dataclass

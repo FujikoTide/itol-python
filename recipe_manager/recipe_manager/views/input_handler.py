@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from recipe_manager.views import MenuGenerator
+from recipe_manager.models import MenuGenerator
 
 
 @dataclass
