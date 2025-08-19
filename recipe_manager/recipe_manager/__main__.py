@@ -1,7 +1,6 @@
 from recipe_manager.models import RecipeManager, Recipe, JSONHandler
-from recipe_manager.recipe_manager.utils.factories.menu_factory import MenuFactory
-from recipe_manager.recipe_manager.views.menu_handler import MenuHandler
-from recipe_manager.views import CLIHandler
+from recipe_manager.utils import MenuFactory
+from recipe_manager.views import MenuHandler, CLIHandler
 
 
 def main():
@@ -14,7 +13,7 @@ def main():
 
     json_handler = JSONHandler()
     cli_handler = CLIHandler()
-    recipe_manager = RecipeManager(json_handler, cli_handler)
+    recipe_manager = RecipeManager(json_handler)
     recipe = Recipe("cat", "boiled cat", "first take your cat...")
     recipe_manager.add_recipe(recipe)
     menu = MenuHandler()

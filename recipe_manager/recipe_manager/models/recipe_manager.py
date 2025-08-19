@@ -2,13 +2,11 @@ from dataclasses import dataclass, field
 from recipe_manager._types import Recipes
 from .recipe import Recipe
 from .storage_handler import StorageHandler
-from recipe_manager.views import InputHandler
 
 
 @dataclass
 class RecipeManager:
     storage: StorageHandler
-    input: InputHandler
     recipes: Recipes = field(init=False)
 
     _MENU_ORDER = [
