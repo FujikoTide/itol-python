@@ -6,8 +6,8 @@ from recipe_manager._types import Ingredient, Ingredients
 class Recipe:
     name: str = ""
     description: str = ""
-    ingredients: Ingredients = field(default_factory=list)
     instructions: str = ""
+    ingredients: Ingredients = field(default_factory=list)
 
     _RECIPE_ORDER = [
         "set_name",

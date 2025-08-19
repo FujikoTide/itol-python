@@ -9,18 +9,26 @@ from recipe_manager.views import InputHandler
 class RecipeManager:
     storage: StorageHandler
     input: InputHandler
-    recipes: Recipes = field(default_factory=list)
+    recipes: Recipes = field(init=False)
 
     _RECIPE_MANAGER_ORDER = [
         "add_recipe",
         "delete_recipe",
         "edit_recipe",
+        "view_recipe",
         "view_all_recipes",
         "search_recipes",
     ]
 
+    # need observer pattern here? when recipes change they automatically call save on the storage handler?
+    # and if storage data exists automatically load on instantiation? how to do this?...... Recipes in storage handler not in Recipe Manager?
+
+    def __post_init__(self):
+        self.recipes: Recipes = []
+
     def add_recipe(self, recipe: Recipe) -> Recipe | None:
         """Add a Recipe of type Recipe."""
+        self.storage.save()
         pass
 
     def delete_recipe(self, recipe_name: str) -> Recipe | None:
@@ -29,6 +37,10 @@ class RecipeManager:
 
     def edit_recipe(self, recipe_name: str) -> Recipe | None:
         """Edit a Recipe."""
+        pass
+
+    def view_recipe(self, name: str) -> Recipe | None:
+        """View a Recipe by Recipe Name."""
         pass
 
     def view_all_recipes(self) -> Recipes | None:
