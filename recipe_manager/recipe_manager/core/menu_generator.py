@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
 import inspect
-from typing import Any, Callable, Type, cast
-from recipe_manager._types import MenuFunction
+from typing import Any, Callable, Type
 
 
 class MenuGenerator:
@@ -16,19 +15,19 @@ class MenuGenerator:
 
     @staticmethod
     def generate(class_object: Type[Any]) -> list[MenuAction]:
-        ordered_members = sorted(
-            [
-                (name, method)
-                for name, method in inspect.getmembers(
-                    class_object, predicate=inspect.isfunction
-                )
-                if hasattr(method, "_order") and not name.startswith("_")
-            ],
-            key=lambda item: cast(MenuFunction, item[1])._order,
-        )
+        class_members = inspect.getmembers(class_object)
+        ordered_methods = []
+        ordered_method_names = [
+            value for name, value in class_members if name.endswith("_ORDER")
+        ][0]
+        for method_name in ordered_method_names:
+            method = getattr(class_object, method_name, None)
+            if method and inspect.isfunction(method):
+                ordered_methods.append((method_name, method))
 
         actions: list[MenuGenerator.MenuAction] = [
             MenuGenerator.MenuAction(name.replace("_", " ").capitalize(), method)
-            for name, method in ordered_members
+            for name, method in ordered_methods
         ]
+
         return actions
