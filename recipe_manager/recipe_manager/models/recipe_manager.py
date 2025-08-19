@@ -11,7 +11,7 @@ class RecipeManager:
     input: InputHandler
     recipes: Recipes = field(init=False)
 
-    _RECIPE_MANAGER_ORDER = [
+    _MENU_ORDER = [
         "add_recipe",
         "delete_recipe",
         "edit_recipe",

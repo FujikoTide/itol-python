@@ -9,7 +9,7 @@ class Recipe:
     instructions: str = ""
     ingredients: Ingredients = field(default_factory=list)
 
-    _RECIPE_ORDER = [
+    _MENU_ORDER = [
         "set_name",
         "set_description",
         "set_instructions",
