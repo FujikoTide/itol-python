@@ -1,0 +1,48 @@
+from dataclasses import dataclass
+from .input_handler import InputHandler
+from menu_handler import MenuHandler
+from recipe_manager._types import MenuAction
+import inspect
+from .output_handler import OutputHandler
+
+
+@dataclass
+class MenuRunner:
+    menu_handler: MenuHandler
+    menu_actions: list[MenuAction]
+    input_handler: InputHandler
+    output_handler: OutputHandler
+
+    def run(self) -> None:
+        while True:
+            menu_display_string = self.menu_handler.get_actions_for_display(
+                self.menu_actions
+            )
+            self.output_handler.display_output(menu_display_string)
+
+            # change to input handler
+            user_input = int(input("Enter a number: "))
+
+            # check for input, it should be a number
+            selected_action = self.menu_handler.get_selected_action(
+                user_input, self.menu_actions
+            )
+
+            if not selected_action:
+                self.output_handler.display_output(
+                    "Invalid input, please enter a valid number."
+                )
+                continue
+            try:
+                signature = inspect.signature(selected_action.method)
+                args_to_pass = []
+                if len(signature.parameters) > 1:
+                    for param in list(signature.parameters.values())[1:]:
+                        # change to input handler too
+                        arg_value = input(f"Enter a value for {param.name}: ")
+                        args_to_pass.append(arg_value)
+
+                selected_action.method(*args_to_pass)
+
+            except Exception as e:
+                self.output_handler.display_output(f"An unexpected error occurred: {e}")

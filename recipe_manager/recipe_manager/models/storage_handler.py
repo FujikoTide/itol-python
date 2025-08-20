@@ -1,13 +1,9 @@
-from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from typing import Protocol
 
 
 @dataclass
-class StorageHandler(ABC):
-    @abstractmethod
-    def save(self) -> bool:
-        pass
+class StorageHandler(Protocol):
+    def save(self) -> bool: ...
 
-    @abstractmethod
-    def load(self) -> bool:
-        pass
+    def load(self) -> bool: ...

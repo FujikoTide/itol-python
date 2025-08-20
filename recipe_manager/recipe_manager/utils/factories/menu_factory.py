@@ -2,10 +2,12 @@ from dataclasses import dataclass
 from recipe_manager.models import RecipeManager, Recipe
 from .menu_generator import MenuGenerator
 
+MenuAction = MenuGenerator.MenuAction
+
 
 @dataclass
 class MenuFactory:
-    def generate(self, class_name: str) -> list[MenuGenerator.MenuAction] | None:
+    def generate(self, class_name: str) -> list[MenuAction] | None:
         MENUS_FROM_CLASSES = {
             "recipe": Recipe,
             "recipe_manager": RecipeManager,

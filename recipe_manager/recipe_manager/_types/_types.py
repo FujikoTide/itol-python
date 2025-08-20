@@ -1,5 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Protocol
+from recipe_manager.utils import MenuGenerator
+
+MenuAction = MenuGenerator.MenuAction
 
 if TYPE_CHECKING:
     from recipe_manager.models import Recipe
@@ -16,3 +19,5 @@ Ingredient = tuple[str, float, str]
 Ingredients = list[Ingredient]
 
 Recipes = list["Recipe"]
+
+Menus = dict[str, list[MenuAction]]

@@ -1,9 +1,8 @@
 from dataclasses import dataclass
-from .storage_handler import StorageHandler
 
 
 @dataclass
-class JSONHandler(StorageHandler):
+class JSONHandler:
     def __post_init__(self):
         # if file exists, load and set _store to file contents.
         pass
