@@ -30,7 +30,7 @@ class Recipe:
         """Set Description of Recipe to new Description."""
         if not isinstance(new_description, str):
             return None
-        self.name = new_description
+        self.description = new_description
         return self.description
 
     def add_ingredient(self, new_ingredient: Ingredient) -> Ingredient | None:
@@ -55,5 +55,5 @@ class Recipe:
         """Set Recipe Instructions to new Instructions."""
         if not isinstance(new_instructions, str):
             return None
-        self.name = new_instructions
+        self.instructions = new_instructions
         return self.instructions

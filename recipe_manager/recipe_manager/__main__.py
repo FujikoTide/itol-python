@@ -18,7 +18,7 @@ def main():
         app_runners[menu_name] = runner
 
     app_controller = AppController(app_runners)
-    app_controller.run_menu("recipe_manager")
+    app_controller.run_menu("recipe")
 
 
 if __name__ == "__main__":

@@ -1,12 +1,10 @@
 from dataclasses import dataclass, field
 from recipe_manager._types import Recipes
 from .recipe import Recipe
-from .storage_handler import StorageHandler
 
 
 @dataclass
 class RecipeManager:
-    storage: StorageHandler
     recipes: Recipes = field(init=False)
 
     _MENU_ORDER = [
@@ -26,7 +24,6 @@ class RecipeManager:
 
     def add_recipe(self, recipe: Recipe) -> Recipe | None:
         """Add a Recipe of type Recipe."""
-        self.storage.save()
         pass
 
     def delete_recipe(self, recipe_name: str) -> Recipe | None:
