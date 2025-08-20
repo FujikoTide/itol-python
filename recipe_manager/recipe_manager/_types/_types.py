@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Protocol
-from recipe_manager.utils import MenuGenerator
+from recipe_manager.views import MenuRunner
+from recipe_manager.core import MenuAction
 
-MenuAction = MenuGenerator.MenuAction
 
 if TYPE_CHECKING:
     from recipe_manager.models import Recipe
@@ -21,3 +21,4 @@ Ingredients = list[Ingredient]
 Recipes = list["Recipe"]
 
 Menus = dict[str, list[MenuAction]]
+Runners = dict[str, MenuRunner]

@@ -1,9 +1,8 @@
 from dataclasses import dataclass
-from typing import Protocol
 
 
 @dataclass
-class CLIInputHandler(Protocol):
+class CLIInputHandler:
     def get_input(self, prompt: str) -> str:
         return input(prompt)
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
-from recipe_manager.utils import MenuAction
+from recipe_manager.core import MenuAction
 
 
 @dataclass

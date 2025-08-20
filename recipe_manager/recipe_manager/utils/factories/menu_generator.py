@@ -1,18 +1,9 @@
-from dataclasses import dataclass, field
 import inspect
-from typing import Any, Callable, Type
+from typing import Any, Type
+from recipe_manager.core import MenuAction
 
 
 class MenuGenerator:
-    @dataclass
-    class MenuAction:
-        name: str
-        method: Callable[..., Any]
-        doc: str = field(init=False)
-
-        def __post_init__(self):
-            self.doc = inspect.getdoc(self.method) or "No description available."
-
     @staticmethod
     def generate(class_object: Type[Any]) -> list[MenuAction]:
         class_members = inspect.getmembers(class_object)
@@ -25,8 +16,8 @@ class MenuGenerator:
             if method and inspect.isfunction(method):
                 ordered_methods.append((method_name, method))
 
-        actions: list[MenuGenerator.MenuAction] = [
-            MenuGenerator.MenuAction(name.replace("_", " ").capitalize(), method)
+        actions: list[MenuAction] = [
+            MenuAction(name.replace("_", " ").capitalize(), method)
             for name, method in ordered_methods
         ]
 

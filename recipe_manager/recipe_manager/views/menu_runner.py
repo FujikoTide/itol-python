@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from .input_handler import InputHandler
-from menu_handler import MenuHandler
-from recipe_manager._types import MenuAction
+from .menu_handler import MenuHandler
+from recipe_manager.core import MenuAction
 import inspect
 from .output_handler import OutputHandler
 

@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 from recipe_manager.models import RecipeManager, Recipe
 from .menu_generator import MenuGenerator
-
-MenuAction = MenuGenerator.MenuAction
+from recipe_manager.core import MenuAction
 
 
 @dataclass
