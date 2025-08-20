@@ -21,7 +21,7 @@ class MenuRunner:
             self.output_handler.display_output(menu_display_string)
 
             # change to input handler
-            user_input = int(input("Enter a number: "))
+            user_input = int(self.input_handler.get_input("Enter a number: "))
 
             # check for input, it should be a number
             selected_action = self.menu_handler.get_selected_action(
@@ -39,7 +39,9 @@ class MenuRunner:
                 if len(signature.parameters) > 1:
                     for param in list(signature.parameters.values())[1:]:
                         # change to input handler too
-                        arg_value = input(f"Enter a value for {param.name}: ")
+                        arg_value = self.input_handler.get_input(
+                            f"Enter a value for {param.name}: "
+                        )
                         args_to_pass.append(arg_value)
 
                 selected_action.method(*args_to_pass)

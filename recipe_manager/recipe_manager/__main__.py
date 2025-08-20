@@ -1,6 +1,6 @@
 from .menus import ALL_MENUS
 from recipe_manager.controllers import AppController
-from recipe_manager.views import MenuRunner, MenuHandler, CLIHandler
+from recipe_manager.views import MenuRunner, MenuHandler, CLIOutputHandler, InputHandler
 
 
 def main():
