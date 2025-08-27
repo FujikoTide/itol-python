@@ -34,36 +34,21 @@ class MenuRunner:
                 )
                 continue
 
-            # --- START DEBUGGING CODE ---
-            self.output_handler.display_output(
-                f"Selected action: {selected_action.name}"
-            )
-            self.output_handler.display_output(
-                f"Method object: {selected_action.method}"
-            )
-
-            signature = inspect.signature(selected_action.method)
-            self.output_handler.display_output(f"Signature: {signature}")
-            self.output_handler.display_output(
-                f"Number of parameters: {len(signature.parameters)}"
-            )
-            self.output_handler.display_output(
-                f"Is > 1? {len(signature.parameters) > 1}"
-            )
-            # --- END DEBUGGING CODE ---
-
             try:
-                signature = inspect.signature(selected_action.method)
-                kwargs_to_pass = {}
-                if len(signature.parameters) > 0:
-                    for param in list(signature.parameters.values())[0:]:
-                        # change to input handler too
-                        arg_value = self.input_handler.get_input(
-                            f"Enter a value for {param.name}: "
-                        )
-                        kwargs_to_pass[param.name] = arg_value
+                if selected_action.method:
+                    signature = inspect.signature(selected_action.method)
+                    kwargs_to_pass = {}
+                    if len(signature.parameters) > 0:
+                        for param in list(signature.parameters.values())[0:]:
+                            # change to input handler too
+                            arg_value = self.input_handler.get_input(
+                                f"Enter a value for {param.name}: "
+                            )
+                            kwargs_to_pass[param.name] = arg_value
 
-                selected_action.method(**kwargs_to_pass)
+                    selected_action.method(**kwargs_to_pass)
+                elif selected_action.callback:
+                    selected_action.callback()
 
             except Exception as e:
                 self.output_handler.display_output(f"An unexpected error occurred: {e}")

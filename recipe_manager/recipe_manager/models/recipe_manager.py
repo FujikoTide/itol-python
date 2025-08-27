@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
-from recipe_manager._types import Recipes
-from .recipe import Recipe
+from recipe_manager._types import Recipes, Recipe
 
 
 @dataclass

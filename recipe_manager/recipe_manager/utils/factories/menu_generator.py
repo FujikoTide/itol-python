@@ -11,7 +11,7 @@ class MenuGenerator:
         ordered_method_names = [
             value
             for name, value in inspect.getmembers(class_object)
-            if name.endswith("_ORDER")
+            if name == "_MENU_ORDER"
         ][0]
         for method_name in ordered_method_names:
             method = getattr(instance, method_name, None)

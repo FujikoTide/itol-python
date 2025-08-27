@@ -1,6 +1,7 @@
 from ._types import (
     Ingredient,
     Ingredients,
+    Recipe,
     Recipes,
     MenuFunction,
     Menus,
@@ -10,6 +11,7 @@ from ._types import (
 __all__ = [
     "Ingredient",
     "Ingredients",
+    "Recipe",
     "Recipes",
     "MenuFunction",
     "Menus",
