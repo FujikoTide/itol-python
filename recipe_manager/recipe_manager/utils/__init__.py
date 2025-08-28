@@ -1,4 +1,4 @@
-from .factories.menu_factory import MenuFactory
-from .factories.menu_generator import MenuGenerator
+from .factories import MenuFactory, MenuGenerator
+from .widgets import RecipeTable
 
-__all__ = ["MenuFactory", "MenuGenerator"]
+__all__ = ["MenuFactory", "MenuGenerator", "RecipeTable"]

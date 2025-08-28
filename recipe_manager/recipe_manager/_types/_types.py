@@ -1,7 +1,10 @@
 from __future__ import annotations
-from typing import Protocol
-from recipe_manager.views import MenuRunner
-from recipe_manager.core import MenuAction
+from typing import Protocol, TYPE_CHECKING
+from recipe_manager.core.menu_action import MenuAction
+
+if TYPE_CHECKING:
+    from recipe_manager.models.recipe import Recipe
+    from recipe_manager.models.ingredient import Ingredient
 
 
 class MenuFunction(Protocol):
@@ -10,12 +13,8 @@ class MenuFunction(Protocol):
     def __call__(self, *args, **kwargs) -> object: ...
 
 
-# list of (ingredient name, quantity of ingredient, unit used for quantity (i.e. grams, millilitres etc))
-Ingredient = tuple[str, float, str]
-Ingredients = list[Ingredient]
+Ingredients = list["Ingredient"]
 
-Recipe = tuple[str, str, str, Ingredients]
-Recipes = list[Recipe]
+Recipes = list["Recipe"]
 
 Menus = dict[str, list[MenuAction]]
-Runners = dict[str, MenuRunner]

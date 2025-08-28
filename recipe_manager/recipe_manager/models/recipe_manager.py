@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
-from recipe_manager._types import Recipes, Recipe
+from recipe_manager._types import Recipes
+from recipe_manager.models.recipe import Recipe
 
 
 @dataclass
@@ -23,7 +24,8 @@ class RecipeManager:
 
     def add_recipe(self, recipe: Recipe) -> Recipe | None:
         """Add a Recipe of type Recipe."""
-        pass
+        self.recipes.append(recipe)
+        return recipe
 
     def delete_recipe(self, recipe_name: str) -> Recipe | None:
         """Delete a Recipe by Recipe Name."""

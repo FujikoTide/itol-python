@@ -1,6 +1,6 @@
 import inspect
 from typing import Any, Type
-from recipe_manager.core import MenuAction
+from recipe_manager.core.menu_action import MenuAction
 
 
 class MenuGenerator:

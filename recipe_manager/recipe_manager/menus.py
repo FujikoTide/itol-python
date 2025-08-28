@@ -1,5 +1,6 @@
-from recipe_manager.utils import MenuGenerator
-from recipe_manager.models import Recipe, RecipeManager
+from recipe_manager.utils.factories.menu_generator import MenuGenerator
+from recipe_manager.models.recipe import Recipe
+from recipe_manager.models.recipe_manager import RecipeManager
 from recipe_manager._types import Menus
 
 

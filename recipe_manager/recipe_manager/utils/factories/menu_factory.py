@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from recipe_manager.models import RecipeManager, Recipe
+from recipe_manager.models.recipe_manager import RecipeManager
+from recipe_manager.models.recipe import Recipe
 from .menu_generator import MenuGenerator
-from recipe_manager.core import MenuAction
+from recipe_manager.core.menu_action import MenuAction
 
 
 @dataclass
