@@ -6,7 +6,7 @@ from recipe_manager.io.CLI_output_handler import CLIOutputHandler
 from recipe_manager.views.menu_runner import MenuRunner
 from recipe_manager.views.menu_handler import MenuHandler
 from recipe_manager.views.wizards.add_recipe_wizard import AddRecipeWizard
-from recipe_manager.utils.widgets.recipe_table import RecipeTable
+from recipe_manager.utils.widgets.CLI_recipe_table import CLIRecipeTable
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     input_handler = CLIInputHandler()
     output_handler = CLIOutputHandler()
     recipe_manager = RecipeManager()
-    table = RecipeTable()
+    table = CLIRecipeTable()
     add_recipe_wizard = AddRecipeWizard(
         input_handler, output_handler, recipe_manager, table
     )

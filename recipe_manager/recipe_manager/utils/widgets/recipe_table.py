@@ -1,18 +1,20 @@
 from recipe_manager._types import Ingredients
-from recipe_manager.views.console import console
-from rich.table import Table
+from recipe_manager.models.recipe import Recipe
+from typing import Protocol
 
 
-class RecipeTable:
+class RecipeTable(Protocol):
     @staticmethod
-    def display_ingredients(ingredients: Ingredients) -> None:
-        table = Table(title="Ingredients")
+    def display_ingredients(ingredients: Ingredients) -> None: ...
 
-        table.add_column("Ingredient", justify="right", style="green", no_wrap=True)
-        table.add_column("Quantity", justify="left", style="green")
-        table.add_column("Unit of Measurement", justify="right", style="green")
+    @staticmethod
+    def display_name(name: str) -> None: ...
 
-        for ingredient in ingredients:
-            table.add_row(ingredient.name, str(ingredient.quantity), ingredient.unit)
+    @staticmethod
+    def display_description(description: str) -> None: ...
 
-        console.print(table)
+    @staticmethod
+    def display_instructions(instructions: str) -> None: ...
+
+    @staticmethod
+    def display_recipe(recipe: Recipe) -> None: ...
