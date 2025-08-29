@@ -7,5 +7,5 @@ class AppActions:
     output_handler: OutputHandler
 
     def exit_program(self):
-        self.output_handler.display_output("[violet]Exiting application...[\]")
+        self.output_handler.display_output("[violet]Exiting application...[/]")
         exit()

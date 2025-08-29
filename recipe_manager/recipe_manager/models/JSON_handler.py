@@ -7,6 +7,7 @@ class JSONHandler:
         # if file exists, load and set _store to file contents.
         pass
 
+    # use display output here
     def save(self) -> bool:
         print("Recipe Saved!")
         return True

@@ -25,9 +25,7 @@ class MenuRunner:
             self.output_handler.display_output(menu_display_string)
 
             # change to input handler
-            user_input = int(
-                self.input_handler.get_string("[yellow1]Enter a number: [/]")
-            )
+            user_input = self.input_handler.get_int("[yellow1]Enter a number: [/]")
 
             # check for input, it should be a number
             selected_action = self.menu_handler.get_selected_action(

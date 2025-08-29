@@ -1,3 +1,3 @@
-from .recipe_table import RecipeTable
+from .recipe_table import DisplayTable
 
-__all__ = ["RecipeTable"]
+__all__ = ["DisplayTable"]

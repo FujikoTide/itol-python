@@ -4,7 +4,7 @@ from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.models.recipe import Recipe
 from recipe_manager.models.recipe_manager import RecipeManager
 from .add_ingredient_wizard import AddIngredientWizard
-from recipe_manager.utils.widgets.recipe_table import RecipeTable
+from recipe_manager.utils.widgets.recipe_table import DisplayTable
 from dataclasses import dataclass
 
 
@@ -13,7 +13,7 @@ class AddRecipeWizard:
     input_handler: InputHandler
     output_handler: OutputHandler
     recipe_manager: RecipeManager
-    recipe_table: RecipeTable
+    recipe_table: DisplayTable
 
     def run(self) -> MenuAction:
         self.output_handler.display_output(
@@ -41,4 +41,8 @@ class AddRecipeWizard:
         def action_method():
             return self.recipe_manager.add_recipe(new_recipe)
 
+        self.recipe_table.display_recipe(new_recipe)
+        self.output_handler.display_output(
+            f"[bright_green]Recipe added: [bold dark_orange]{new_recipe.name}[/].[/]"
+        )
         return MenuAction("Add Recipe", action_method, None)

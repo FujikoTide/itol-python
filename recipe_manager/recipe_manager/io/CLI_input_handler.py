@@ -45,5 +45,7 @@ class CLIInputHandler:
             try:
                 user_input = console.input(prompt)
                 return type_func(user_input)
-            except (ValueError, KeyboardInterrupt, EOFError):
+            except ValueError:
                 console.print("[violet]Invalid input. Please try again.[/]")
+            except (KeyboardInterrupt, EOFError):
+                raise
