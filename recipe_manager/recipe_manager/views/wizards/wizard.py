@@ -1,11 +1,9 @@
 from recipe_manager.core.menu_action import MenuAction
 from recipe_manager.io.input_handler import InputHandler
 from recipe_manager.io.output_handler import OutputHandler
-from dataclasses import dataclass
 from typing import Protocol
 
 
-@dataclass
 class Wizard(Protocol):
     input_handler: InputHandler
     output_handler: OutputHandler

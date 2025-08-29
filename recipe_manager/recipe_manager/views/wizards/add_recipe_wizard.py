@@ -4,7 +4,7 @@ from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.models.recipe import Recipe
 from recipe_manager.models.recipe_manager import RecipeManager
 from .add_ingredient_wizard import AddIngredientWizard
-from recipe_manager.utils.widgets.recipe_table import DisplayTable
+from recipe_manager.utils.widgets.display_table import DisplayTable
 from dataclasses import dataclass
 
 

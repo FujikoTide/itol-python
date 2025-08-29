@@ -5,7 +5,7 @@ from rich.table import Table
 from rich import box
 
 
-class CLIRecipeTable:
+class CLIDisplayTable:
     def display_ingredients(self, ingredients: Ingredients) -> None:
         table = Table(
             title="[italic]Ingredients[/]",
@@ -116,3 +116,6 @@ class CLIRecipeTable:
         table_recipe.add_row(table_instructions)
 
         console.print(table_recipe)
+
+    def display_list(self, title: str, list: list[str]) -> None:
+        pass

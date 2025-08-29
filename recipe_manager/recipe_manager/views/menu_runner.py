@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Mapping
 from recipe_manager.io.input_handler import InputHandler
 from recipe_manager.io.output_handler import OutputHandler
 from .menu_handler import MenuHandler
@@ -15,7 +16,7 @@ class MenuRunner:
     input_handler: InputHandler
     output_handler: OutputHandler
     recipe_manager: RecipeManager
-    wizards: dict[str, Wizard]
+    wizards: Mapping[str, Wizard]
 
     def run(self) -> None:
         while True:
