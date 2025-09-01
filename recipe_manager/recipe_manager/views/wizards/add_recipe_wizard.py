@@ -13,7 +13,7 @@ class AddRecipeWizard:
     input_handler: InputHandler
     output_handler: OutputHandler
     recipe_manager: RecipeManager
-    recipe_table: DisplayTable
+    display_table: DisplayTable
 
     def run(self) -> MenuAction:
         self.output_handler.display_output(
@@ -25,7 +25,7 @@ class AddRecipeWizard:
         instructions = self.input_handler.get_string("[orange1]Enter instructions:[/] ")
 
         ingredient_wizard = AddIngredientWizard(self.input_handler, self.output_handler)
-        ingredients = []
+        ingredients = {}
         while True:
             choice = self.input_handler.get_yes_no(
                 "[orange1]Would you like to add an ingredient?[/] "
@@ -33,15 +33,15 @@ class AddRecipeWizard:
             if not choice:
                 break
             ingredient = ingredient_wizard.run()
-            ingredients.append(ingredient)
-            self.recipe_table.display_ingredients(ingredients)
+            ingredients[name] = ingredient
+            self.display_table.display_ingredients(ingredients)
 
         new_recipe = Recipe(name, description, instructions, ingredients)
 
         def action_method():
             return self.recipe_manager.add_recipe(new_recipe)
 
-        self.recipe_table.display_recipe(new_recipe)
+        self.display_table.display_recipe(new_recipe)
         self.output_handler.display_output(
             f"[bright_green]Recipe added: [bold dark_orange]{new_recipe.name}[/].[/]"
         )

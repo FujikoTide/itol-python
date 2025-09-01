@@ -13,8 +13,8 @@ class MenuFunction(Protocol):
     def __call__(self, *args, **kwargs) -> object: ...
 
 
-Ingredients = list["Ingredient"]
+Ingredients = dict[str, "Ingredient"]
 
-Recipes = list["Recipe"]
+Recipes = dict[str, "Recipe"]
 
 Menus = dict[str, list[MenuAction]]

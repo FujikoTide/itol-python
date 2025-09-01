@@ -56,7 +56,7 @@ class MenuRunner:
                             for param in list(signature.parameters.values())[0:]:
                                 # change to input handler too
                                 arg_value = self.input_handler.get_string(
-                                    f"[yellow1]Enter a value for[/] [plum1]{param.name}[/][yellow1]:[/] "
+                                    f"[yellow1]Enter a value for[/] [bold dark_orange]{param.name}[/][yellow1]:[/] "
                                 )
                                 kwargs_to_pass[param.name] = arg_value
 

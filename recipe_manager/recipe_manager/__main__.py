@@ -1,4 +1,4 @@
-from recipe_manager.menus import ALL_MENUS
+from recipe_manager.menus import ALL_MENUS, recipe_manager, RECIPE_MANAGER_MENU
 from recipe_manager.controllers.app_controller import AppController
 from recipe_manager.models.recipe_manager import RecipeManager
 from recipe_manager.io.CLI_input_handler import CLIInputHandler
@@ -13,14 +13,19 @@ def main():
     menu_handler = MenuHandler()
     input_handler = CLIInputHandler()
     output_handler = CLIOutputHandler()
-    recipe_manager = RecipeManager()
+    # recipe_manager = RecipeManager()
     table = CLIDisplayTable()
     add_recipe_wizard = AddRecipeWizard(
         input_handler, output_handler, recipe_manager, table
     )
-    wizards = {"Add recipe": add_recipe_wizard}
+    wizards = {
+        "Add recipe": add_recipe_wizard,
+        # "Delete recipe": delete_recipe_wizard,
+        # "Edit recipe": edit_recipe_wizard,
+        # "Get recipe": get_recipe_wizard,
+    }
     app_runners = {}
-    for menu_name, actions_list in ALL_MENUS.items():
+    for menu_name, actions_list in RECIPE_MANAGER_MENU.items():
         runner = MenuRunner(
             menu_handler,
             actions_list,

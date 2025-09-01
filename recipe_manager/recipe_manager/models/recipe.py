@@ -8,7 +8,7 @@ class Recipe:
     name: str = ""
     description: str = ""
     instructions: str = ""
-    ingredients: Ingredients = field(default_factory=list)
+    ingredients: Ingredients = field(default_factory=dict)
 
     _MENU_ORDER = [
         "set_name",
@@ -34,23 +34,27 @@ class Recipe:
         self.description = new_description
         return self.description
 
-    def add_ingredient(self, new_ingredient: Ingredient) -> Ingredient | None:
+    def add_ingredient(self, new_ingredient: Ingredient) -> Ingredient:
         """Add one Ingredient of type Ingredient."""
-        pass
+        self.ingredients[new_ingredient.name] = new_ingredient
+        return new_ingredient
 
-    def delete_ingredient(self, ingredient: str) -> Ingredient | None:
+    def delete_ingredient(self, ingredient_name: str) -> Ingredient | None:
         """Delete one Ingredient by Ingredient Name."""
-        pass
+        if self._find_ingredient_in_dict(ingredient_name):
+            return self.ingredients.pop(ingredient_name)
+        return None
 
-    def add_multiple_ingredients(
-        self, new_ingredients: Ingredients
-    ) -> Ingredients | None:
+    def add_multiple_ingredients(self, new_ingredients: Ingredients) -> Ingredients:
         """Add multiple Ingredients of type list[Ingredient]."""
-        pass
+        self.ingredients.update(new_ingredients)
+        return self.ingredients
 
-    def delete_all_ingredients(self) -> Ingredients | None:
+    def delete_all_ingredients(self) -> Ingredients:
         """Delete all Ingredients."""
-        pass
+        temp_ingredients = self.ingredients
+        self.ingredients.clear()
+        return temp_ingredients
 
     def set_instructions(self, new_instructions: str) -> str | None:
         """Set Recipe Instructions to new Instructions."""
@@ -58,3 +62,6 @@ class Recipe:
             return None
         self.instructions = new_instructions
         return self.instructions
+
+    def _find_ingredient_in_dict(self, ingredient_name: str) -> Ingredient | None:
+        return self.ingredients.get(ingredient_name)

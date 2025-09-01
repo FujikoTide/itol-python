@@ -19,7 +19,7 @@ class CLIDisplayTable:
         table.add_column("Quantity", justify="left", style="orange1")
         table.add_column("Unit", justify="right", style="italic orange1")
 
-        for ingredient in ingredients:
+        for ingredient in ingredients.values():
             table.add_row(ingredient.name, str(ingredient.quantity), ingredient.unit)
 
         console.print(table)
@@ -94,7 +94,7 @@ class CLIDisplayTable:
             table_ingredients.add_column(
                 "Unit", justify="right", style="italic orange1"
             )
-            for ingredient in recipe.ingredients:
+            for ingredient in recipe.ingredients.values():
                 table_ingredients.add_row(
                     ingredient.name, str(ingredient.quantity), ingredient.unit
                 )
