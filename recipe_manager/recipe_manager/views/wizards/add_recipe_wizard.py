@@ -33,7 +33,8 @@ class AddRecipeWizard:
             if not choice:
                 break
             ingredient = ingredient_wizard.run()
-            ingredients[name] = ingredient
+            ingredients[ingredient.name] = ingredient
+            print(ingredients)
             self.display_table.display_ingredients(ingredients)
 
         new_recipe = Recipe(name, description, instructions, ingredients)
