@@ -14,13 +14,13 @@ class DeleteRecipeAction(BaseMenuAction):
     display_table: DisplayTable
 
     name: str = "Delete Recipe"
-    doc: str = "Delete a recipe from the collection"
+    doc: str = "Delete a recipe from the collection."
 
     def execute(
         self,
     ) -> None:
         self.output_handler.display_output(
-            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting New Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
+            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting Delete Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
         )
 
         recipe_name = self.input_handler.get_string(

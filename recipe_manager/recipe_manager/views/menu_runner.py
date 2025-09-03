@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from recipe_manager.io.input_handler import InputHandler
 from recipe_manager.io.output_handler import OutputHandler
+from recipe_manager.core.base_action import BaseMenuAction
 from .menu_handler import MenuHandler
-from recipe_manager.core.menu_action import MenuAction
 
 
 @dataclass
 class MenuRunner:
     menu_handler: MenuHandler
-    menu_actions: list[MenuAction]
+    menu_actions: list[BaseMenuAction]
     input_handler: InputHandler
     output_handler: OutputHandler
 

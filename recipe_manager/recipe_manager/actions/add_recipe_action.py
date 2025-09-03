@@ -16,7 +16,7 @@ class AddRecipeAction(BaseMenuAction):
     display_table: DisplayTable
 
     name: str = "Add Recipe"
-    doc: str = "Add a new recipe to the collection"
+    doc: str = "Add a new recipe to the collection."
 
     def execute(self) -> None:
         self.output_handler.display_output(

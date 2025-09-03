@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
-from recipe_manager.core.menu_action import MenuAction
+from recipe_manager.core.base_action import BaseMenuAction
 
 
 @dataclass
 class MenuHandler:
-    def get_actions_for_display(self, menu_items: list[MenuAction]) -> str:
+    def get_actions_for_display(self, menu_items: list[BaseMenuAction]) -> str:
         if not menu_items:
             return "No Menu to display."
         menu_string = ""
@@ -18,8 +18,8 @@ class MenuHandler:
 
     @staticmethod
     def get_selected_action(
-        user_input: int, menu_items: list[MenuAction]
-    ) -> Optional[MenuAction]:
+        user_input: int, menu_items: list[BaseMenuAction]
+    ) -> Optional[BaseMenuAction]:
         if not user_input < len(menu_items):
             return None
         index = int(user_input)

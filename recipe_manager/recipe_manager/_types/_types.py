@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Protocol, TYPE_CHECKING
-from recipe_manager.core.menu_action import MenuAction
+from recipe_manager.core.base_action import BaseMenuAction
 
 if TYPE_CHECKING:
     from recipe_manager.models.recipe import Recipe
@@ -17,4 +17,4 @@ Ingredients = dict[str, "Ingredient"]
 
 Recipes = dict[str, "Recipe"]
 
-Menus = dict[str, list[MenuAction]]
+Menus = dict[str, list[BaseMenuAction]]
