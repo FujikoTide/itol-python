@@ -1,21 +1,24 @@
-from recipe_manager.core.menu_action import MenuAction
-from recipe_manager.io.input_handler import InputHandler
+from dataclasses import dataclass
+from recipe_manager.core.base_action import BaseMenuAction
 from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.models.recipe import Recipe
 from recipe_manager.models.recipe_manager import RecipeManager
-from .add_ingredient_wizard import AddIngredientWizard
+from recipe_manager.io.input_handler import InputHandler
 from recipe_manager.utils.widgets.display_table import DisplayTable
-from dataclasses import dataclass
+from recipe_manager.views.wizards.add_ingredient_wizard import AddIngredientWizard
 
 
-@dataclass
-class AddRecipeWizard:
+@dataclass(kw_only=True)
+class AddRecipeAction(BaseMenuAction):
     input_handler: InputHandler
     output_handler: OutputHandler
     recipe_manager: RecipeManager
     display_table: DisplayTable
 
-    def run(self) -> MenuAction:
+    name: str = "Add Recipe"
+    doc: str = "Add a new recipe to the collection"
+
+    def execute(self) -> None:
         self.output_handler.display_output(
             "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting New Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
         )
@@ -37,12 +40,12 @@ class AddRecipeWizard:
             self.display_table.display_ingredients(ingredients)
 
         new_recipe = Recipe(name, description, instructions, ingredients)
+        result = self.recipe_manager.add_recipe(new_recipe)
 
-        def action_method():
-            return self.recipe_manager.add_recipe(new_recipe)
-
-        self.display_table.display_recipe(new_recipe)
-        self.output_handler.display_output(
-            f"[bright_green]Recipe added: [bold dark_orange]{new_recipe.name}[/].[/]"
-        )
-        return MenuAction("Add Recipe", action_method, None)
+        if isinstance(result, Recipe):
+            self.display_table.display_recipe(new_recipe)
+            self.output_handler.display_output(
+                f"[bright_green]Recipe added: [bold dark_orange]{result.name}[/].[/]"
+            )
+        else:
+            self.output_handler.display_output("Failed to add recipe.")

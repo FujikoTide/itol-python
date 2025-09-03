@@ -1,16 +1,10 @@
-from dataclasses import dataclass, field
-import inspect
-from typing import Any, Callable
+from typing import Any, Callable, Protocol
 
 
-@dataclass
-class MenuAction:
+class MenuAction(Protocol):
     name: str
-    method: Callable[..., Any]
-    callback: Callable[..., Any] | None = None
-    doc: str = field(init=False)
+    method: Callable[..., Any] | None
+    callback: Callable[..., Any] | None
+    doc: str = "No description available."
 
-    def __post_init__(self):
-        self.doc = (
-            inspect.getdoc(self.method or self.callback) or "No description available."
-        )
+    def execute(self) -> None: ...
