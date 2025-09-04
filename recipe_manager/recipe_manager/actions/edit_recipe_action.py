@@ -22,7 +22,7 @@ class EditRecipeAction(BaseMenuAction):
         self,
     ) -> None:
         self.output_handler.display_output(
-            "[orange1][dark_orange]-[/][gold1]-[/][deep_pink2]-[/] Starting Edit Recipe Wizard [deep_pink2]-[/][gold1]-[/][dark_orange]-[/][/]"
+            "[orange1][dark_orange]-[/][gold1]-[/][deep_pink2]-[/] Edit Recipe [deep_pink2]-[/][gold1]-[/][dark_orange]-[/][/]"
         )
 
         recipe_name = self.input_handler.get_string(

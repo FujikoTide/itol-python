@@ -20,7 +20,7 @@ class AddRecipeAction(BaseMenuAction):
 
     def execute(self) -> None:
         self.output_handler.display_output(
-            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting New Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
+            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] New Recipe [red1]-[/][bright_yellow]-[/][green]-[/][/]"
         )
 
         name = self.input_handler.get_string("[orange1]Enter recipe name:[/] ")

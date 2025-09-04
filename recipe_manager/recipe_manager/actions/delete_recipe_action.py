@@ -20,7 +20,7 @@ class DeleteRecipeAction(BaseMenuAction):
         self,
     ) -> None:
         self.output_handler.display_output(
-            "[orange1][cyan1]-[/][magenta]-[/][purple]-[/] Starting Delete Recipe Wizard [purple]-[/][magenta]-[/][cyan1]-[/][/]"
+            "[orange1][cyan1]-[/][magenta]-[/][purple]-[/] Delete Recipe [purple]-[/][magenta]-[/][cyan1]-[/][/]"
         )
 
         recipe_name = self.input_handler.get_string(
