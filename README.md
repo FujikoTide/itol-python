@@ -44,7 +44,7 @@ Then git clone the project, and run:
 uv sync
 ```
 
-in the root of the recipe manager project, which should be the initial `recipe_manager` folder.
+In the root of the recipe manager project, which should be the initial `recipe_manager` folder.
 
 Then run the following command to run the python package from the same folder:
 
@@ -62,7 +62,7 @@ Upon starting the program:
 
 ![alt text](readme_images/programimage1.png)
 
-choose a number and the program will guide you through the various processes:
+Choose a number and the program will guide you through the various processes:
 
 
 ![alt text](readme_images/programimage2.png)
