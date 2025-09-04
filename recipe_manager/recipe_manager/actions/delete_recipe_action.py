@@ -20,18 +20,17 @@ class DeleteRecipeAction(BaseMenuAction):
         self,
     ) -> None:
         self.output_handler.display_output(
-            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting Delete Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
+            "[orange1][cyan1]-[/][magenta]-[/][purple]-[/] Starting Delete Recipe Wizard [purple]-[/][magenta]-[/][cyan1]-[/][/]"
         )
 
         recipe_name = self.input_handler.get_string(
             "[orange1]Enter name of recipe to delete:[/] "
         )
 
-        # redo colours here for error/ success
         result = self.recipe_manager.get_recipe(recipe_name)
         if not result:
             self.output_handler.display_output(
-                f"[bright_green]Recipe not found: [bold dark_orange]{recipe_name}[/]. No action has been taken.[/]"
+                f"[violet]Recipe not found: [bold dark_orange]{recipe_name}[/]. No action has been taken.[/]"
             )
             return
         deleted_recipe = self.recipe_manager.delete_recipe(recipe_name)
@@ -42,5 +41,5 @@ class DeleteRecipeAction(BaseMenuAction):
             )
         else:
             self.output_handler.display_output(
-                f"[bright_green]An unexpected error has occurred when deleting {recipe_name}.[/]"
+                f"[bright_red]An unexpected error has occurred when deleting [bold dark_orange]{recipe_name}[/].[/]"
             )

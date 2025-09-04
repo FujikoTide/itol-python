@@ -32,6 +32,5 @@ class MenuRunner:
                     "[violet]Invalid input, please enter a valid number.[/]"
                 )
                 continue
-
             selected_action.execute()
             self.recipe_manager.save_recipes()

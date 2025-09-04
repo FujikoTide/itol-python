@@ -18,11 +18,11 @@ class ViewAllRecipesAction(BaseMenuAction):
 
     def execute(self) -> None:
         self.output_handler.display_output(
-            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] View All Recipes [red1]-[/][bright_yellow]-[/][green]-[/][/]"
+            "[orange1][pale_green1]-[/][light_goldenrod2]-[/][light_coral]-[/] View All Recipes [light_coral]-[/][light_goldenrod2]-[/][pale_green1]-[/][/]"
         )
         all_recipes = self.recipe_manager.get_all_recipes()
         if not all_recipes:
-            self.output_handler.display_output("No recipes have been recorded.")
+            self.output_handler.display_output("[violet]No recipes have been saved.[/]")
             return
 
         for recipe in all_recipes.values():

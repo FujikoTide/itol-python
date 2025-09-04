@@ -48,4 +48,4 @@ class AddRecipeAction(BaseMenuAction):
                 f"[bright_green]Recipe added: [bold dark_orange]{result.name}[/].[/]"
             )
         else:
-            self.output_handler.display_output("Failed to add recipe.")
+            self.output_handler.display_output("[bright_red]Failed to add recipe.[/]")

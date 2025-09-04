@@ -22,18 +22,17 @@ class EditRecipeAction(BaseMenuAction):
         self,
     ) -> None:
         self.output_handler.display_output(
-            "[orange1][green]-[/][bright_yellow]-[/][red1]-[/] Starting Edit Recipe Wizard [red1]-[/][bright_yellow]-[/][green]-[/][/]"
+            "[orange1][dark_orange]-[/][gold1]-[/][deep_pink2]-[/] Starting Edit Recipe Wizard [deep_pink2]-[/][gold1]-[/][dark_orange]-[/][/]"
         )
 
         recipe_name = self.input_handler.get_string(
             "[orange1]Enter name of recipe to edit:[/] "
         )
 
-        # redo colours here for error/ success
         old_recipe = self.recipe_manager.get_recipe(recipe_name)
         if not old_recipe:
             self.output_handler.display_output(
-                f"[bright_green]Recipe not found: [bold dark_orange]{recipe_name}[/]. No action has been taken.[/]"
+                f"[violet]Recipe not found: [bold dark_orange]{recipe_name}[/]. No action has been taken.[/]"
             )
             return
 
@@ -63,5 +62,5 @@ class EditRecipeAction(BaseMenuAction):
             )
         else:
             self.output_handler.display_output(
-                f"[bright_green]An unexpected error has occurred when editing {recipe_name}.[/]"
+                f"[bright_red]An unexpected error has occurred when editing [bold dark_orange]{recipe_name}[/].[/]"
             )
