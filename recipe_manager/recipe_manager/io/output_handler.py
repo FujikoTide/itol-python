@@ -1,5 +1,5 @@
-from typing import Protocol
+from typing import Any, Protocol
 
 
 class OutputHandler(Protocol):
-    def display_output(self, content: str): ...
+    def display_output(self, content: Any): ...

@@ -3,6 +3,7 @@ from .application_setup import (
     menu_handler,
     input_handler,
     output_handler,
+    recipe_manager,
 )
 from recipe_manager.views.menu_runner import MenuRunner
 
@@ -15,6 +16,7 @@ def main():
         menu_actions,
         input_handler,
         output_handler,
+        recipe_manager,
     )
     menu_runner.run()
 

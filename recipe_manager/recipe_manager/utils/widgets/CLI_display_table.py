@@ -1,11 +1,15 @@
+from dataclasses import dataclass
 from recipe_manager._types import Ingredients
-from recipe_manager.views.console import console
+from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.models.recipe import Recipe
 from rich.table import Table
 from rich import box
 
 
+@dataclass
 class CLIDisplayTable:
+    output_handler: OutputHandler
+
     def display_ingredients(self, ingredients: Ingredients) -> None:
         table = Table(
             title="[italic]Ingredients[/]",
@@ -22,7 +26,7 @@ class CLIDisplayTable:
         for ingredient in ingredients.values():
             table.add_row(ingredient.name, str(ingredient.quantity), ingredient.unit)
 
-        console.print(table)
+        self.output_handler.display_output(table)
 
     def display_description(self, description: str) -> None:
         table = Table(
@@ -36,7 +40,7 @@ class CLIDisplayTable:
         table.add_column("Description", justify="left", style="orange1", no_wrap=False)
         table.add_row(description)
 
-        console.print(table)
+        self.output_handler.display_output(table)
 
     def display_instructions(self, instructions: str) -> None:
         table = Table(
@@ -50,7 +54,7 @@ class CLIDisplayTable:
         table.add_column("Instructions", justify="left", style="orange1", no_wrap=False)
         table.add_row(instructions)
 
-        console.print(table)
+        self.output_handler.display_output(table)
 
     def display_recipe(self, recipe: Recipe) -> None:
         table_recipe = Table(
@@ -115,7 +119,7 @@ class CLIDisplayTable:
 
         table_recipe.add_row(table_instructions)
 
-        console.print(table_recipe)
+        self.output_handler.display_output(table_recipe)
 
     def display_list(self, title: str, list: list[str]) -> None:
         pass

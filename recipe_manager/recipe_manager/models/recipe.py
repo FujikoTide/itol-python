@@ -10,16 +10,6 @@ class Recipe:
     instructions: str = ""
     ingredients: Ingredients = field(default_factory=dict)
 
-    _MENU_ORDER = [
-        "set_name",
-        "set_description",
-        "set_instructions",
-        "add_ingredient",
-        "delete_ingredient",
-        "add_multiple_ingredients",
-        "delete_all_ingredients",
-    ]
-
     def set_name(self, new_name: str) -> str | None:
         """Set Name of Recipe to new Name."""
         if not isinstance(new_name, str):

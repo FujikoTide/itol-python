@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from recipe_manager.io.input_handler import InputHandler
 from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.core.base_action import BaseMenuAction
+from recipe_manager.models.recipe_manager import RecipeManager
 from .menu_handler import MenuHandler
 
 
@@ -11,6 +12,7 @@ class MenuRunner:
     menu_actions: list[BaseMenuAction]
     input_handler: InputHandler
     output_handler: OutputHandler
+    recipe_manager: RecipeManager
 
     def run(self) -> None:
         while True:
@@ -19,10 +21,8 @@ class MenuRunner:
             )
             self.output_handler.display_output(menu_display_string)
 
-            # change to input handler
             user_input = self.input_handler.get_int("[yellow1]Enter a number: [/]")
 
-            # check for input, it should be a number
             selected_action = self.menu_handler.get_selected_action(
                 user_input - 1, self.menu_actions
             )
@@ -34,3 +34,4 @@ class MenuRunner:
                 continue
 
             selected_action.execute()
+            self.recipe_manager.save_recipes()

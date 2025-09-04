@@ -1,11 +1,16 @@
+from dataclasses import dataclass
 import sys
 from typing import Callable, TypeVar
+from recipe_manager.io.output_handler import OutputHandler
 from recipe_manager.views.console import console
 
 T = TypeVar("T", int, float, bool, str)
 
 
+@dataclass
 class CLIInputHandler:
+    output_handler: OutputHandler
+
     def get_string(self, prompt: str) -> str:
         return console.input(prompt)
 
@@ -34,7 +39,7 @@ class CLIInputHandler:
                 user_input = self.get_int(prompt)
                 if min_val <= user_input <= max_val:
                     return user_input
-                console.print(
+                self.output_handler.display_output(
                     f"[violet]Input must be between[/] [orange1]{min_val}[/] [violet]and[/] [orange1]{max_val}[/][violet].[/]"
                 )
             except (KeyboardInterrupt, EOFError):
@@ -46,6 +51,8 @@ class CLIInputHandler:
                 user_input = console.input(prompt)
                 return type_func(user_input)
             except ValueError:
-                console.print("[violet]Invalid input. Please try again.[/]")
+                self.output_handler.display_output(
+                    "[violet]Invalid input. Please try again.[/]"
+                )
             except (KeyboardInterrupt, EOFError):
                 raise

@@ -1,7 +1,10 @@
 from typing import Protocol
+from recipe_manager.io.output_handler import OutputHandler
 
 
 class InputHandler(Protocol):
+    output_handler: OutputHandler
+
     def get_string(self, prompt: str) -> str: ...
 
     def get_optional_string(self, prompt: str) -> str | None: ...
