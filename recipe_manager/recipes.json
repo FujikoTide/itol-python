@@ -1,36 +1,13 @@
 {
-    "tgrg": {
-        "name": "tgrg",
-        "description": "rtgrt",
-        "instructions": "g",
-        "ingredients": {}
-    },
-    "dgd": {
-        "name": "dgd",
-        "description": "dfggdfg",
-        "instructions": "dgdfg",
+    "Steak": {
+        "name": "Steak",
+        "description": "Frying a steak",
+        "instructions": "Take a steak of your choosing and cook until done",
         "ingredients": {
-            "ghnfhvhfghg": {
-                "name": "ghnfhvhfghg",
-                "quantity": 4.0,
-                "unit": "dfgdg"
-            },
-            "dfgd": {
-                "name": "dfgd",
-                "quantity": 4.0,
-                "unit": "fghfgh"
-            }
-        }
-    },
-    "fdsfsdfg": {
-        "name": "fdsfsdfg",
-        "description": "dfgdfgg",
-        "instructions": "dfgfg",
-        "ingredients": {
-            "dfgdfg": {
-                "name": "dfgdfg",
-                "quantity": 6.0,
-                "unit": "dfgdf"
+            "Steak": {
+                "name": "Steak",
+                "quantity": 200.0,
+                "unit": "grams"
             }
         }
     }
